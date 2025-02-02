@@ -27,25 +27,76 @@ print(read_text_file("example.txt"))
 Напиши функцию, которая принимает имя текстового файла и выводит количество строк в этом файле.
 Подсказка: Используй метод .readlines() для считывания всех строк файла.
 '''
-
+# def count_lines():
+#     try:
+#         with open("example.txt", "r", encoding='utf-8') as file:
+#             content = file.readlines()
+#             lines = 0
+#             for line in content:
+#                 lines += 1
+#             return lines
+#     except FileNotFoundError:
+#         return "Ошибка: Файл не найден"
+#     except PermissionError:
+#         return "Ошибка: Нет прав доступа к файлу"
+#
+# print(count_lines())
 '''
 Задача 2:
 Напиши функцию, которая принимает имя текстового файла и выводит количество слов в этом файле.
 Подсказка: Раздели строки файла по пробелам с помощью метода .split().
 '''
-
+# def words_count():
+#     try:
+#         with open("example.txt", "r", encoding='utf-8') as file:
+#             content = file.read()
+#             words = content.split()
+#             count = len(words)
+#             return count
+#     except FileNotFoundError:
+#         return "Ошибка: Файл не найден"
+#     except PermissionError:
+#         return "Ошибка: Нет прав доступа к файлу"
+# print(words_count())
 '''
 Задача 3:
 Напиши функцию, которая принимает имя текстового файла и выводит самое длинное слово в файле.
 Подсказка: Считай все слова, используй функцию len() для определения длины каждого слова.
 '''
-
+# def the_longest_word():
+#     try:
+#         with open("example.txt", "r", encoding='utf-8') as file:
+#             content = file.read()
+#             words = content.split()
+#             word = ""
+#             for el in words:
+#                 if len(el) > len(word):
+#                     word = el
+#             return word
+#     except FileNotFoundError:
+#         return "Ошибка: Файл не найден"
+#     except PermissionError:
+#         return "Ошибка: Нет прав доступа к файлу"
+# print(the_longest_word())
 '''
 Задача 4:
 Напиши функцию, которая принимает имя текстового файла и выводит все строки, содержащие указанное слово.
 Подсказка: Проверяй каждую строку на наличие слова с помощью оператора in.
 '''
-
+# def content_in_file(text_part):
+#     try:
+#         with open("example.txt", "r", encoding='utf-8') as file:
+#             content = file.read()
+#             words = content.split()
+#             for el in words:
+#                 if text_part in el:
+#                     print(el)
+#     except FileNotFoundError:
+#         return "Ошибка: Файл не найден"
+#     except PermissionError:
+#         return "Ошибка: Нет прав доступа к файлу"
+# print(content_in_file("текст"))
+# print(content_in_file("Pyth"))
 '''
 Задача 5:
 Напиши функцию, которая принимает имя текстового файла и заменяет все вхождения одного слова другим.
