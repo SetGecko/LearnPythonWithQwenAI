@@ -7,7 +7,17 @@
 В методе __init__ сохрани параметры title, author и year.
 Определи метод get_age(), который вычислит разницу между текущим годом (например, 2023) и годом выпуска.
 '''
-
+# class Book:
+#     def __init__(self, title, author, year):
+#         self.title = title
+#         self.author = author
+#         self.year = year
+#     def get_age(self):
+#         book_age = 2023 - self.year
+#         return book_age
+#
+# book = Book("Град обреченный","Братья Стругацкие", 1987)
+# print(f"Книге уже = {book.get_age()} лет")
 '''
 Задача 2: Класс для студента
 Напиши класс Student, который хранит имя (name) и список оценок (grades). Добавь метод average_grade(),
@@ -17,7 +27,21 @@
 В методе __init__ сохрани параметры name и grades (список чисел).
 Определи метод average_grade(), который вычислит среднее значение списка оценок.
 '''
-
+# class Student:
+#     def __init__(self, name, grades):
+#         self.name = name
+#         self.grades = grades
+#     def average_grade(self):
+#         summa = 0
+#         count = len(self.grades)
+#         for el in self.grades:
+#             summa += el
+#         average = summa / count
+#         return average
+#
+#
+# stud = Student("Алексей", [5, 5, 4, 3, 4])
+# print(f"Среднее значение оценок = {stud.average_grade()}")
 '''
 Задача 3: Класс для автомобиля
 Напиши класс Car, который хранит марку (brand), год выпуска (year) и пробег (mileage). 
@@ -27,18 +51,43 @@
 В методе __init__ сохрани параметры brand, year и mileage.
 Определи метод drive(distance), который добавляет distance к пробегу.
 '''
-
+# class Car:
+#     def __init__(self, brand, year, mileage):
+#         self.brand = brand
+#         self.year = year
+#         self.mileage = mileage
+#     def distance(self, distance):
+#         self.mileage += distance
+#         return self.mileage
+#
+#
+# car = Car("Deawoo Nexia", 2013, 33200)
+# print(f"После пробега в 400км, текущей пробег стал равен: {car.distance(400)}")
 '''
 Задача 4: Класс для банковского счета
 Напиши класс BankAccount, который хранит имя владельца (owner) и баланс (balance). 
 Добавь метод withdraw(amount), который уменьшает баланс, если сумма не превышает его.
-
 Алгоритм:
 Создай класс BankAccount.
 В методе __init__ сохрани параметры owner и balance.
 Определи метод withdraw(amount), который проверяет, достаточно ли средств, и уменьшает баланс.
 '''
-
+# class BankAccount:
+#     def __init__(self, owner, balance):
+#         self.owner = owner
+#         self.balance = balance
+#     def withdraw(self, amount):
+#         if amount <= self.balance:
+#             self.balance -= amount
+#             return f"Остаток на балансе = {self.balance}"
+#
+#         else:
+#             return "Недостаточно средств"
+#
+#
+# acc = BankAccount("Алексей", 7000)
+# print(acc.withdraw(700))
+# print(acc.withdraw(10000))
 '''
 Задача 5: Класс для прямоугольника
 Напиши класс Rectangle, который хранит ширину (width) и высоту (height). 
@@ -48,7 +97,21 @@
 В методе __init__ сохрани параметры width и height.
 Определи метод is_square(), который проверит равенство сторон.
 '''
-
+# class Rectangle:
+#     def __init__(self, width, height):
+#         self.width = width
+#         self.height = height
+#     def is_square(self):
+#         if self.width == self.height:
+#             return True
+#         else:
+#             return False
+#
+#
+# rect = Rectangle(4,4)
+# print(rect.is_square())
+# rect2 = Rectangle(4, 5)
+# print(rect2.is_square())
 '''
 Задача 6: Класс для точки
 Напиши класс Point, который хранит координаты x и y. Добавь метод distance_to(other_point), который вычисляет расстояние до другой точки.
@@ -57,7 +120,20 @@
 В методе __init__ сохрани координаты x и y.
 Определи метод distance_to(other_point), используя формулу расстояния между точками.
 '''
-
+# import math
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#     def distance_to(self, other_point):
+#         dx = other_point.x - self.x
+#         dy = other_point.y - self.y
+#         return math.sqrt(dx ** 2 + dy ** 2)
+#
+# p1 = Point(4, 7)
+# p2 = Point(8, 9)
+# distance = p1.distance_to(p2)
+# print(distance)
 '''
 Задача 7: Класс для списка покупок
 Напиши класс ShoppingList, который хранит список товаров (items). Добавь метод remove_item(item), который удаляет товар из списка.
@@ -66,8 +142,17 @@
 В методе __init__ создай пустой список items.
 Определи метод remove_item(item), который удаляет товар из списка.
 '''
-
-
+# class ShoppingList:
+#     def __init__(self, items):
+#         self.list = list(items)
+#     def remove_item(self, item):
+#         if item in self.list:
+#             self.list.remove(item)
+#         return self.list
+#
+#
+# sl = ShoppingList(["Помидор", "Чабрец", "Яблоки"])
+# print(sl.remove_item("Чабрец"))
 '''
 Задача 8: Класс для человека
 Напиши класс Person, который хранит имя (name) и возраст (age). Добавь метод celebrate_birthday(), который увеличивает возраст на 1.
@@ -76,7 +161,17 @@
 В методе __init__ сохрани параметры name и age.
 Определи метод celebrate_birthday(), который увеличивает возраст.
 '''
-
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#     def celebrate_birthday(self):
+#         self.age += 1
+#         return self.age
+#
+#
+# h1 = Person("Алексей", 37)
+# print(h1.celebrate_birthday())
 '''
 Задача 9: Класс для круга
 Напиши класс Circle, который хранит радиус (radius). Добавь метод is_large(), 
@@ -86,7 +181,22 @@
 В методе __init__ сохрани параметр radius.
 Определи метод is_large(), который вычислит площадь и проверит условие.
 '''
-
+# from math import pi
+# class Circle:
+#     def __init__(self, radius):
+#         self.radius = radius
+#     def is_large(self):
+#         plo = pi * self.radius ** 2
+#         if plo > 100:
+#             return True
+#         else:
+#             return False
+#
+#
+# c1 = Circle(4)
+# print(c1.is_large())
+# c2 = Circle(37)
+# print(c2.is_large())
 '''
 Задача 10: Класс для треугольника
 Напиши класс Triangle, который хранит стороны a, b, c. Добавь метод is_valid(), 
