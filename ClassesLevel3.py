@@ -12,7 +12,26 @@
 Рассчитывает расход топлива: (distance / 100) * fuel_consumption.
 Определи метод is_old(), который проверяет возраст автомобиля.
 '''
-
+# class Car:
+#     def __init__(self, brand, year, mileage):
+#         self.brand = brand
+#         self.year = year
+#         self.mileage = mileage
+#         self.fuel_consumption = 0
+#     def drive(self, distance):
+#         self.mileage += distance
+#         self.fuel_consumption = (distance / 100) * self.fuel_consumption
+#         return self.mileage, self.fuel_consumption
+#     def is_old(self):
+#         if self.year > 10:
+#             return True
+#         else:
+#             return False
+#
+#
+# c1 = Car("Daewoo Nexia", 2013, 33000)
+# print(c1.drive(200))
+# print(c1.is_old())
 '''
 Напиши класс BankAccount, который хранит имя владельца (owner), баланс (balance) и 
 процентную ставку (interest_rate). Добавь метод withdraw(amount), который уменьшает баланс. 
@@ -25,7 +44,29 @@
 Определи метод add_interest(), который увеличивает баланс на проценты:
 balance += balance * (interest_rate / 100).
 '''
-
+# class BankAccount:
+#     def __init__(self, owner, balance, interest_rate):
+#         self.owner = owner
+#         self.balance = balance
+#         self.interest_rate = interest_rate
+#     def withdraw(self, amount):
+#         if amount > self.balance:
+#             return "Недостаточно средств!"
+#         else:
+#             self.balance = self.balance - amount
+#             return f"Баланс карты = {self.balance}"
+#     def add_interest(self):
+#         if self.balance > 0:
+#             self.balance += self.balance * (self.interest_rate / 100)
+#             return f"Баланс после начисления процентов = {self.balance:.2f}"
+#         else:
+#             return "Проценты не начисляются на отрицательный баланс."
+#
+#
+# b1 = BankAccount("Алексей", 10000, 4)
+# print(b1.withdraw(20000))
+# print(b1.withdraw(3000))
+# print(b1.add_interest())
 '''
 Задача 3: Класс для прямоугольника
 Напиши класс Rectangle, который хранит ширину (width), высоту (height) и цвет (color). 
@@ -38,7 +79,30 @@ balance += balance * (interest_rate / 100).
 Определи метод get_area(), который вычисляет площадь.
 Определи метод change_color(new_color), который обновляет цвет.
 '''
-
+# class Rectangle:
+#     def __init__(self, width, height, color):
+#         self.width = width
+#         self.height = height
+#         self.color = color
+#     def scale(self, factor):
+#         if factor == 0 or factor < 0:
+#             return "Масштабирование невозможно равным 0 или менее его"
+#         else:
+#             self.width *= factor
+#             self.height *= factor
+#             return self.width, self.height
+#     def get_area(self):
+#         area = self.width * self.height
+#         return f"Площадь = {area}"
+#     def new_color(self,nc):
+#         self.color = nc
+#         return self.color
+#
+#
+# rc = Rectangle(5, 6, "red")
+# print(rc.scale(2))
+# print(rc.get_area())
+# print(rc.new_color("зеленый"))
 '''
 Задача 4: Класс для точки
 Напиши класс Point, который хранит координаты x и y. 
@@ -70,7 +134,36 @@ balance += balance * (interest_rate / 100).
 Принимает словарь цен (prices), где ключ — название товара, значение — цена.
 Считает общую стоимость товаров из списка.
 '''
-
+# class ShoppingList:
+#     def __init__(self, name):
+#         self.name = name
+#         self.items = []
+#     def add_item(self, item):
+#         self.items.append(item)
+#         return self.items
+#     def remove_item(self, item):
+#         self.items.remove(item)
+#         return self.items
+#     def total_price(self, prices):
+#         total = 0
+#         for item in self.items:
+#             if item in prices:
+#                 total += prices[item]
+#             else:
+#                 print(f"Цена для товара '{item}' не указана.")
+#         return f"Общая стоимость товаров: {total} рублей"
+#
+#
+# shopping_list = ShoppingList("Магазин")
+# shopping_list.add_item("Хлеб")
+# shopping_list.add_item("Молоко")
+# shopping_list.add_item("Яблоки")
+# prices = {
+#     "Хлеб": 50,
+#     "Молоко": 80,
+#     "Яблоки": 60
+# }
+# print(shopping_list.total_price(prices))
 '''
 Задача 6: Класс для человека
 Напиши класс Person, который хранит имя (name), возраст (age) и рост (height). 
