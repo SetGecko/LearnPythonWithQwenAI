@@ -127,7 +127,16 @@ print(user.get_age())   # Вывод: 40
 Использует защищенные атрибуты _name и _age для формирования строки.
 Убедись, что напрямую извне класса нельзя изменить _name или _age.
 '''
+class User:
+    def __init__(self, name, age):
+        self._name = name
+        self._age = age
+    def get_info(self):
+        return f"Пользователь - {self._name}, Возраст - {self._age}"
 
+
+u1 = User("Алексей", 37)
+print(u1.get_info())
 '''
 Задача 2: Класс для банковского счета
 Напиши класс BankAccount, который хранит баланс (_balance).
@@ -145,7 +154,24 @@ print(user.get_age())   # Вывод: 40
 Вычитает сумму из баланса.
 Убедись, что баланс доступен только через методы.
 '''
+class BankAccount:
+    def __init__(self, balance):
+        self._balance = balance
+    def deposit(self, amount):
+        self._balance += amount
+        return self._balance
+    def withdraw(self, amount):
+        if self._balance < amount:
+            return "Недостаточно средств!"
+        else:
+            self._balance -= amount
+            return self._balance
 
+
+ba = BankAccount(1000)
+print(ba.deposit(200))
+print(ba.withdraw(1300))
+print(ba.withdraw(800))
 '''
 Задача 3: Класс для книги
 Напиши класс Book, который хранит название (_title) и год выпуска (_year).
@@ -160,7 +186,17 @@ print(user.get_age())   # Вывод: 40
 Обновляет значение _year.
 Убедись, что доступ к _title и _year возможен только через методы.
 '''
+class Book:
+    def __init__(self, title, year):
+        self._title = title
+        self._year = year
+    def update_year(self, new_year):
+        self._year = new_year
+        return self._year
 
+
+b1 = Book("Пикник на обочине", 1979)
+print(b1.update_year(1980))
 '''
 Задача 4: Класс для автомобиля
 Напиши класс Car, который хранит пробег (_mileage) и марку (brand).
@@ -175,7 +211,21 @@ print(user.get_age())   # Вывод: 40
 Увеличивает _mileage на указанное расстояние.
 Убедись, что пробег доступен только через методы.
 '''
+class Car:
+    def __init__(self, mileage, brand):
+        self._mileage = mileage
+        self.brand = brand
+    def drive(self, distance):
+        if distance > 0:
+            self._mileage += distance
+            return self._mileage
+        else:
+            return "Пробег не может быть равным 0"
 
+
+c1 = Car(1000, "Daewoo Nexia")
+print(c1.drive(0))
+print(c1.drive(300))
 '''
 Задача 5: Класс для прямоугольника
 Напиши класс Rectangle, который хранит ширину (_width) и высоту (_height).
@@ -190,7 +240,22 @@ print(user.get_age())   # Вывод: 40
 Умножает _width и _height на коэффициент.
 Убедись, что размеры доступны только через методы.
 '''
+class Rectangle:
+    def __init__(self, width, height):
+        self._width = width
+        self._height = height
+    def scale(self, factor):
+        if factor <= 0:
+            return "Скалирование невозможно"
+        else:
+            self._width *= factor
+            self._height *= factor
+            return self._width, self._height
 
+
+r1 = Rectangle(4, 2)
+print(r1.scale(-1))
+print(r1.scale(2))
 '''
 Задача 6: Класс для телефона
 Напиши класс Phone, который хранит список вызовов (_calls).
@@ -204,7 +269,19 @@ print(user.get_age())   # Вывод: 40
 Определи метод last_call(), который возвращает последний вызов.
 Убедись, что доступ к списку вызовов возможен только через методы.
 '''
+class Phone:
+    def __init__(self, items):
+        self._calls = list(items)
+    def add_call(self, call):
+        self._calls.append(call)
+        return self._calls
+    def last_call(self):
+        return self._calls[-1]
 
+
+p1 = Phone([11, 22, 33, 44])
+print(p1.add_call(55))
+print(p1.last_call())
 '''
 Задача 7: Класс для студента
 Напиши класс Student, который хранит список оценок (_grades).
@@ -218,7 +295,25 @@ print(user.get_age())   # Вывод: 40
 Определи метод average_grade(), который вычисляет среднюю оценку.
 Убедись, что доступ к списку оценок возможен только через методы.
 '''
+class Student:
+    def __init__(self):
+        self._grades = []
+    def add_grade(self, grade):
+        self._grades.append(grade)
+        return self._grades
+    def average_grade(self):
+        gr = 0
+        for el in self._grades:
+            gr += el
+        return gr / len(self._grades)
 
+
+st1 = Student()
+print(st1.add_grade(5))
+print(st1.add_grade(5))
+print(st1.add_grade(4))
+print(st1.add_grade(3))
+print(st1.average_grade())
 '''
 Задача 8: Класс для города
 Напиши класс City, который хранит население (_population).
@@ -233,7 +328,20 @@ print(user.get_age())   # Вывод: 40
 Изменяет _population.
 Убедись, что доступ к населению возможен только через методы.
 '''
+class City:
+    def __init__(self, population):
+        self._population = population
+    def update_population(self, change):
+        if change < 0:
+            return "Население в воставшие скелеты превращать нельзя"
+        else:
+            self._population = change
+            return self._population
 
+
+c1 = City(2000000)
+print(c1.update_population(1700000))
+print(c1.update_population(-2))
 '''
 Задача 9: Класс для времени
 Напиши класс Time, который хранит часы (_hours) и минуты (_minutes).
@@ -248,7 +356,21 @@ print(user.get_age())   # Вывод: 40
 Обрабатывает переход через 24 часа.
 Убедись, что доступ к времени возможен только через методы.
 '''
+class Time:
+    def __init__(self, hours, minutes):
+        self._hours = hours
+        self._minutes = minutes
+    def add_time(self, other_time):
+        total_minutes = self._minutes + other_time._minutes
+        total_hours = self._hours + other_time._hours + total_minutes // 60
+        self._hours = total_hours % 24
+        self._minutes = total_minutes % 60
+        return f"{self._hours}:{self._minutes:02}"
 
+
+t1 = Time(10, 25)
+t2 = Time(6, 22)
+print(t1.add_time(t2))
 '''
 Задача 10: Класс для кофемашины
 Напиши класс CoffeeMachine, который хранит количество воды (_water), кофе (_coffee) и молока (_milk).
@@ -264,7 +386,33 @@ print(user.get_age())   # Вывод: 40
 Проверяет наличие ресурсов перед изготовлением кофе.
 Убедись, что доступ к ресурсам возможен только через методы.
 '''
+class CoffeeMachine:
+    def __init__(self, water, coffee, milk):
+        self._water = water
+        self._coffee = coffee
+        self._milk = milk
+    def make_coffee(self, type):
+        if type.lower() == "эспрессо":
+            if self._water < 10 and self._coffee < 5:
+                return "Недостаточно ресурсов"
+            else:
+                self._water -= 10
+                self._coffee -= 5
+                return "Наслаждаемся эспрессо!"
+        elif type.lower() == "капучино":
+            if self._water < 10 and self._coffee < 5 and self._milk < 10:
+                return "Недостаточно ресурсов"
+            else:
+                self._water -= 10
+                self._coffee -= 5
+                self._milk -= 10
+                return "Наслаждаемся капучино!"
 
+
+cm = CoffeeMachine(15, 10, 10)
+print(cm.make_coffee("эспрессо"))
+print(cm.make_coffee("капучино"))
+print(cm.make_coffee("капучино"))
 '''
 ===========Задачи на использование приватных атрибутов===========
 '''
