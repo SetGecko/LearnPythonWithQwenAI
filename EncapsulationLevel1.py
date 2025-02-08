@@ -436,28 +436,28 @@ print(user.get_age())   # Вывод: 40
 Если средств недостаточно, возвращает "Недостаточно средств!".
 Убедись, что доступ к __balance возможен только через методы.
 '''
-# class BankAccount:
-#     def __init__(self, balance):
-#         self.__balance = balance
-#     def deposit(self, amount):
-#         if amount <= 0:
-#             return "Так нельзя"
-#         else:
-#             self.__balance += amount
-#             return self.__balance
-#     def withdraw(self, amount):
-#         if amount > self.__balance:
-#             return "Недостаточно средств!"
-#         else:
-#             self.__balance -= amount
-#             return self.__balance
-#
-#
-# ba = BankAccount(10000)
-# print(ba.deposit(0))
-# print(ba.deposit(220))
-# print(ba.withdraw(11000))
-# print(ba.withdraw(4000))
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance
+    def deposit(self, amount):
+        if amount <= 0:
+            return "Так нельзя"
+        else:
+            self.__balance += amount
+            return self.__balance
+    def withdraw(self, amount):
+        if amount > self.__balance:
+            return "Недостаточно средств!"
+        else:
+            self.__balance -= amount
+            return self.__balance
+
+
+ba = BankAccount(10000)
+print(ba.deposit(0))
+print(ba.deposit(220))
+print(ba.withdraw(11000))
+print(ba.withdraw(4000))
 '''
 Задача 2: Класс для пользователя
 Напиши класс User, который хранит имя (name) и пароль (__password).
@@ -472,19 +472,19 @@ print(user.get_age())   # Вывод: 40
 Возвращает True или False.
 Убедись, что доступ к __password возможен только через метод check_password().
 '''
-# class User:
-#     def __init__(self, name, password):
-#         self.name = name
-#         self.__password = password
-#     def check_password(self, password_attempt):
-#         if self.__password == password_attempt:
-#             return True
-#         else:
-#             return False
-#
-#
-# u1 = User("Алексей", "qwerty")
-# print(u1.check_password("qwerty"))
+class User:
+    def __init__(self, name, password):
+        self.name = name
+        self.__password = password
+    def check_password(self, password_attempt):
+        if self.__password == password_attempt:
+            return True
+        else:
+            return False
+
+
+u1 = User("Алексей", "qwerty")
+print(u1.check_password("qwerty"))
 '''
 Задача 3: Класс для книги
 Напиши класс Book, который хранит название (title) и год выпуска (__year).
@@ -499,21 +499,21 @@ print(user.get_age())   # Вывод: 40
 Обновляет значение __year.
 Убедись, что доступ к __year возможен только через метод update_year().
 '''
-# class Book:
-#     def __init__(self, title, year):
-#         self.title = title
-#         self.__year = year
-#     def update_year(self, new_year):
-#         if new_year > self.__year:
-#             self.__year = new_year
-#             return self.__year
-#         else:
-#             return "Нельзя"
-#
-#
-# b1 = Book("Пикник на обочине", 1979)
-# print(b1.update_year(1960))
-# print(b1.update_year(1980))
+class Book:
+    def __init__(self, title, year):
+        self.title = title
+        self.__year = year
+    def update_year(self, new_year):
+        if new_year > self.__year:
+            self.__year = new_year
+            return self.__year
+        else:
+            return "Нельзя"
+
+
+b1 = Book("Пикник на обочине", 1979)
+print(b1.update_year(1960))
+print(b1.update_year(1980))
 '''
 Задача 4: Класс для автомобиля
 Напиши класс Car, который хранит пробег (__mileage) и марку (brand).
@@ -528,21 +528,21 @@ print(user.get_age())   # Вывод: 40
 Увеличивает __mileage на указанное расстояние.
 Убедись, что доступ к __mileage возможен только через метод drive().
 '''
-# class Car:
-#     def __init__(self, mileage, brand):
-#         self.__mileage = mileage
-#         self.brand = brand
-#     def drive(self, distance):
-#         if distance > 0:
-#             self.__mileage += distance
-#             return self.__mileage
-#         else:
-#             "Пробег в минус невозможен"
-#
-#
-# c1 = Car(1000, "Daewoo Nexia")
-# print(c1.drive(0))
-# print(c1.drive(200))
+class Car:
+    def __init__(self, mileage, brand):
+        self.__mileage = mileage
+        self.brand = brand
+    def drive(self, distance):
+        if distance > 0:
+            self.__mileage += distance
+            return self.__mileage
+        else:
+            "Пробег в минус невозможен"
+
+
+c1 = Car(1000, "Daewoo Nexia")
+print(c1.drive(0))
+print(c1.drive(200))
 '''
 Задача 5: Класс для прямоугольника
 Напиши класс Rectangle, который хранит ширину (width) и высоту (height).
@@ -560,23 +560,23 @@ print(user.get_age())   # Вывод: 40
 Пересчитывает __area как width * height.
 Убедись, что доступ к __area возможен только через метод set_dimensions().
 '''
-# class Rectangle:
-#     def __init__(self, width, height):
-#         self.width = width
-#         self.height = height
-#         self.__area = 0
-#     def set_dimensions(self, width, height):
-#         if self.width > 0 and self.height > 0:
-#             self.width = width
-#             self.height = height
-#             self.__area = self.width * self.height
-#             return f"Новые размеры: {self.width} - {self.height}, площадь = {self.__area}"
-#         else:
-#             return "Так нельзя"
-#
-#
-# rec = Rectangle(4, 3)
-# print(rec.set_dimensions(2,3))
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+        self.__area = 0
+    def set_dimensions(self, width, height):
+        if self.width > 0 and self.height > 0:
+            self.width = width
+            self.height = height
+            self.__area = self.width * self.height
+            return f"Новые размеры: {self.width} - {self.height}, площадь = {self.__area}"
+        else:
+            return "Так нельзя"
+
+
+rec = Rectangle(4, 3)
+print(rec.set_dimensions(2,3))
 '''
 Задача 6: Класс для телефона
 Напиши класс Phone, который хранит номер (number) и список вызовов (__calls).
@@ -589,18 +589,18 @@ print(user.get_age())   # Вывод: 40
 Определи метод add_call(call), который добавляет вызов в список __calls.
 Убедись, что доступ к __calls возможен только через метод add_call().
 '''
-# class Phone:
-#     def __init__(self, number):
-#         self.number = number
-#         self.__calls = []
-#     def add_call(self, call):
-#         self.__calls.append(call)
-#         return self.__calls
-#
-#
-# ph = Phone(89604914701)
-# print(ph.add_call(123))
-# print(ph.add_call(898))
+class Phone:
+    def __init__(self, number):
+        self.number = number
+        self.__calls = []
+    def add_call(self, call):
+        self.__calls.append(call)
+        return self.__calls
+
+
+ph = Phone(89604914701)
+print(ph.add_call(123))
+print(ph.add_call(898))
 '''
 Задача 7: Класс для студента
 Напиши класс Student, который хранит имя (name) и список оценок (__grades).
@@ -613,18 +613,18 @@ print(user.get_age())   # Вывод: 40
 Определи метод add_grade(grade), который добавляет оценку в список __grades.
 Убедись, что доступ к __grades возможен только через метод add_grade().
 '''
-# class Student:
-#     def __init__(self, name):
-#         self.name = name
-#         self.__grades = []
-#     def add_grade(self, grade):
-#         self.__grades.append(grade)
-#         return self.__grades
-#
-#
-# st = Student("Алексей")
-# print(st.add_grade(5))
-# print(st.add_grade(4))
+class Student:
+    def __init__(self, name):
+        self.name = name
+        self.__grades = []
+    def add_grade(self, grade):
+        self.__grades.append(grade)
+        return self.__grades
+
+
+st = Student("Алексей")
+print(st.add_grade(5))
+print(st.add_grade(4))
 '''
 Задача 8: Класс для города
 Напиши класс City, который хранит название (name) и население (__population).
@@ -639,7 +639,21 @@ print(user.get_age())   # Вывод: 40
 Изменяет __population.
 Убедись, что доступ к __population возможен только через метод update_population().
 '''
+class City:
+    def __init__(self, name, population):
+        self.name = name
+        self.__population = population
+    def update_population(self, change):
+        if change < 0:
+            return "Мертвые души уже не в моде"
+        else:
+            self.__population += change
+            return self.__population
 
+
+ci = City("Краснодар", 1000000)
+print(ci.update_population(-9))
+print(ci.update_population(50000))
 '''
 Задача 9: Класс для времени
 Напиши класс Time, который хранит часы (hours) и минуты (__minutes).
@@ -654,7 +668,20 @@ print(user.get_age())   # Вывод: 40
 Обрабатывает переход через 60 минут и 24 часа.
 Убедись, что доступ к __minutes возможен только через метод add_time().
 '''
+class Time:
+    def __init__(self, hours, minutes):
+        self.hours = hours
+        self.__minutes = minutes
+    def add_time(self, other_time):
+        total_minutes = self.__minutes + other_time.__minutes
+        total_hours = self.hours + other_time.hours + total_minutes // 60
+        total_hours = total_hours % 24
+        total_minutes = total_minutes % 60
+        return f"{total_hours}:{total_minutes}"
 
+t1 = Time(10, 15)
+t2 = Time(6, 11)
+print(t1.add_time(t2))
 '''
 Задача 10: Класс для кофемашины
 Напиши класс CoffeeMachine, который хранит количество воды (water), кофе (__coffee) и молока (milk).
@@ -670,4 +697,29 @@ print(user.get_age())   # Вывод: 40
 Проверяет наличие ресурсов перед изготовлением.
 Убедись, что доступ к __coffee возможен только через метод make_coffee().
 '''
+class CoffeeMachine:
+    def __init__(self, water, coffee, milk):
+        self.water = water
+        self.__coffee = coffee
+        self.milk = milk
+    def make_coffee(self, cof):
+        if cof.lower() == "эспрессо":
+            if self.__coffee < 5 or self.water < 10:
+                return "Недостаточно ресурсов!"
+            else:
+                self.__coffee -= 5
+                self.water -= 10
+                return "Наслаждайтесь ароматным эспрессо"
+        elif cof.lower() == "капучино":
+            if self.__coffee < 5 or self.water < 10 or self.milk < 10:
+                return "Недостаточно ресурсов!"
+            else:
+                self.__coffee -= 5
+                self.water -= 10
+                self.milk -= 10
+                return "Наслаждайтесь ароматным капучино"
 
+
+cm = CoffeeMachine(10, 10, 10)
+print(cm.make_coffee("эспрессо"))
+print(cm.make_coffee("капучино"))
