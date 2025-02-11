@@ -1,0 +1,4 @@
+[
+    {"type": "savings", "balance": 10000, "interest_rate": 4},
+    {"type": "credit_card", "balance": 10000, "limit": 9000}
+]

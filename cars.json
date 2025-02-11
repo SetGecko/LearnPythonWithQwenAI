@@ -1,0 +1,4 @@
+[
+    {"brand": "Daewoo Nexia", "year": 2013, "type": "sedan"},
+    {"brand": "Камаз", "year": 1900, "type": "truck", "load_capacity": 20000}
+]
