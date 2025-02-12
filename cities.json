@@ -1,4 +1,4 @@
 [
-    {"name": "Москва", "population": 11000000, "is_capital": true},
+    {"name": "Москва", "population": 12000000, "is_capital": true, "country": "Россия"},
     {"name": "Тимашевск", "population": 200000, "is_capital": false}
 ]
