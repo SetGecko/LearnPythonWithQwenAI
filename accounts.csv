@@ -1,0 +1,10 @@
+type,balance,interest_rate,limit
+savings,10000,4,
+credit_card,5000,,3000
+savings,15000,5,
+credit_card,8000,,7000
+savings,20000,6,
+credit_card,12000,,10000
+savings,30000,7,
+credit_card,10000,,5000
+savings,5000,3,

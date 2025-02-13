@@ -1,0 +1,11 @@
+brand,year,type,load_capacity
+Daewoo Nexia,2013,sedan,
+Toyota Corolla,2018,sedan,
+Lada Granta,2020,sedan,
+Kamaz,1900,truck,20000
+Volvo FH,2015,truck,15000
+MAN TGA,2017,truck,18000
+Hyundai Solaris,2021,sedan,
+Nissan X-Trail,2019,sedan,
+Ford Transit,2016,van,3000
+Mercedes-Benz Sprinter,2018,van,4000
