@@ -1,81 +1,4 @@
 '''
-Как читать и писать CSV-файлы в Python?
-Для работы с CSV в Python используется модуль csv. Вот основные шаги:
-Импортируем модуль:
-import csv
-Чтение из CSV-файла:
-Открываем файл с помощью open() в режиме "r" (чтение).
-Используем csv.reader() или csv.DictReader() для чтения данных.
-Запись в CSV-файл:
-Открываем файл с помощью open() в режиме "w" (запись).
-Используем csv.writer() или csv.DictWriter() для записи данных.
-
-Пример: Чтение из CSV-файла
-CSV-файл (users.csv):
-name,age,is_student
-Алексей,37,False
-Мария,25,True
-Иван,19,True
-
-Python-код:
-import csv
-
-# Открываем CSV-файл для чтения
-with open("users.csv", "r", encoding="utf-8") as file:
-    reader = csv.DictReader(file)  # Читаем файл как словарь
-    for row in reader:
-        print(f"Имя: {row['name']}, Возраст: {row['age']}, Студент: {row['is_student']}")
-
-
-Основные методы модуля csv:
-csv.reader(file) :
-Читает CSV-файл как список строк.
-with open("users.csv", "r", encoding="utf-8") as file:
-    reader = csv.reader(file)
-    for row in reader:
-        print(row)  # row — это список значений
-
-csv.DictReader(file) :
-Читает CSV-файл как словарь, используя первую строку как ключи.
-with open("users.csv", "r", encoding="utf-8") as file:
-    reader = csv.DictReader(file)
-    for row in reader:
-        print(row["name"], row["age"], row["is_student"])
-
-csv.writer(file) :
-Записывает данные в CSV-файл как список строк.
-data = [["name", "age", "is_student"], ["Алексей", 37, False], ["Мария", 25, True]]
-with open("users.csv", "w", encoding="utf-8", newline="") as file:
-    writer = csv.writer(file)
-    writer.writerows(data)
-
-csv.DictWriter(file, fieldnames) :
-Записывает данные в CSV-файл как словарь.
-data = [{"name": "Алексей", "age": 37, "is_student": False}]
-with open("users.csv", "w", encoding="utf-8", newline="") as file:
-    writer = csv.DictWriter(file, fieldnames=["name", "age", "is_student"])
-    writer.writeheader()
-    writer.writerows(data)
-
-
-Особенности работы с CSV
-Разделители:
-По умолчанию csv использует запятую , как разделитель. Если в файле используется другой разделитель (например, точка с запятой ;), укажи его явно:
-python
-Copy
-1
-reader = csv.reader(file, delimiter=";")
-Кодировка:
-Всегда указывай кодировку encoding="utf-8", чтобы избежать проблем с русскими символами.
-Обработка ошибок:
-Иногда CSV-файл может быть поврежден или иметь неправильную структуру. Обрабатывай такие ситуации с помощью блока try-except.
-Работа с большими файлами:
-Если файл очень большой, используй цикл for для построчного чтения, чтобы не загружать всё содержимое в память.
-
-
-'''
-
-'''
 Задача 1: Информация о пользователях
 Алгоритм:
 Создай класс User, который будет хранить имя (name), возраст (age) и статус студента (is_student).
@@ -85,7 +8,26 @@ reader = csv.reader(file, delimiter=";")
 Создай список объектов класса User на основе данных из файла.
 Вызови метод get_info() для каждого объекта и выведи результат.
 '''
-
+# import csv
+# class User:
+#     def __init__(self, name, age, is_student):
+#         self.name = name
+#         self.age = age
+#         self.is_student = is_student
+#     def get_info(self):
+#         return f"Имя: {self.name}, Возраст: {self.age}, Студент: {self.is_student}"
+#
+# users_list = []
+#
+# with open("users.csv", "r", encoding="utf-8") as file:
+#     reader = csv.reader(file)
+#     next(reader)
+#     for row in reader:
+#         user = User(row[0], row[1], row[2])
+#         users_list.append(user)
+#
+# for user in users_list:
+#     print(user.get_info())
 '''
 Задача 2: Список книг
 Алгоритм:
@@ -99,7 +41,48 @@ reader = csv.reader(file, delimiter=";")
 Создай список объектов (Ebook или PaperBook в зависимости от наличия ключей format или pages).
 Вызови метод get_info() для каждого объекта и выведи результат.
 '''
-
+# import csv
+#
+# class Book:
+#     def __init__(self, title, author):
+#         self.title = title
+#         self.author = author
+#
+#     def get_info(self):
+#         return "Информация о книге"
+#
+# class Ebook(Book):
+#     def __init__(self, title, author, format):
+#         super().__init__(title, author)
+#         self.format = format
+#
+#     def get_info(self):
+#         return f"Электронная книга: {self.title}, Автор: {self.author}, Формат: {self.format}"
+#
+# # Определяем класс PaperBook
+# class PaperBook(Book):
+#     def __init__(self, title, author, pages):
+#         super().__init__(title, author)
+#         self.pages = pages
+#
+#     def get_info(self):
+#         return f"Печатная книга: {self.title}, Автор: {self.author}, Страниц: {self.pages}"
+#
+#
+# books = []
+#
+# with open("books.csv", "r", encoding="utf-8") as file:
+#     reader = csv.DictReader(file)
+#     for row in reader:
+#         if row.get("format"):
+#             ebook = Ebook(row["title"], row["author"], row["format"])
+#             books.append(ebook)
+#         elif row.get("pages"):
+#             paperbook = PaperBook(row["title"], row["author"], int(row["pages"]))
+#             books.append(paperbook)
+#
+# for book in books:
+#     print(book.get_info())
 '''
 Задача 3: Автопарк
 Алгоритм:
@@ -115,7 +98,51 @@ reader = csv.reader(file, delimiter=";")
 Создай список объектов (Sedan, Truck или Van в зависимости от типа автомобиля).
 Вызови метод get_info() для каждого объекта и выведи результат.
 '''
-
+# import csv
+# class Car:
+#     def __init__(self, brand, year):
+#         self.brand = brand
+#         self.year = year
+#     def get_info(self):
+#         return "Информация о машине"
+#
+# class Sedan(Car):
+#     def __init__(self, brand, year):
+#         super().__init__(brand, year)
+#     def get_info(self):
+#         return f"Легковой автомобиль: {self.brand}, Год: {self.year}"
+#
+# class Truck(Car):
+#     def __init__(self, brand, year, load_capacity):
+#         super().__init__(brand, year)
+#         self.load_capacity = load_capacity
+#     def get_info(self):
+#         return f"Грузовик: {self.brand}, Год: {self.year}, Грузоподъемность: {self.load_capacity}"
+#
+# class Van(Car):
+#     def __init__(self, brand, year, load_capacity):
+#         super().__init__(brand, year)
+#         self.load_capacity = load_capacity
+#     def get_info(self):
+#         return f"Фургон: {self.brand}, Год: {self.year}, Грузоподъемность: {self.load_capacity}"
+#
+# cars = []
+#
+# with open("cars.csv", "r", encoding="utf-8") as file:
+#     reader = csv.DictReader(file)
+#     for row in reader:
+#         if row.get("type") == "sedan":
+#             sedan = Sedan(row["brand"], int(row["year"]))
+#             cars.append(sedan)
+#         elif row.get("type") == "van":
+#             van = Van(row["brand"], int(row["year"]), int(row["load_capacity"]))
+#             cars.append(van)
+#         elif row.get("type") == "truck":
+#             truck = Truck(row["brand"], int(row["year"]), int(row["load_capacity"]))
+#             cars.append(truck)
+#
+# for car in cars:
+#     print(car.get_info())
 '''
 Задача 4: Города
 Алгоритм:
