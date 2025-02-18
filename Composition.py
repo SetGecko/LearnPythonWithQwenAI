@@ -89,7 +89,25 @@ print(car.get_info())
 Вызывает метод start() у объекта self.engine.
 Возвращает строку "Автомобиль: [brand], Двигатель: [power] л.с.".
 '''
+class Engine:
+    def __init__(self, power):
+        self.power = power
 
+    def start(self):
+        return f"Двигатель мощностью {self.power} л.с. запущен"
+
+class Car:
+    def __init__(self, brand, power):
+        self.brand = brand
+        self.engine = Engine(power)
+    def get_info(self):
+        return (
+            f"Автомобиль: {self.brand}\n"
+            f"{self.engine.start()}\n"
+        )
+
+car = Car("Daewoo Nexia", 87)
+print(car.get_info())
 '''
 Задача 2: Компьютер
 Алгоритм:
