@@ -89,25 +89,25 @@ print(car.get_info())
 Вызывает метод start() у объекта self.engine.
 Возвращает строку "Автомобиль: [brand], Двигатель: [power] л.с.".
 '''
-class Engine:
-    def __init__(self, power):
-        self.power = power
-
-    def start(self):
-        return f"Двигатель мощностью {self.power} л.с. запущен"
-
-class Car:
-    def __init__(self, brand, power):
-        self.brand = brand
-        self.engine = Engine(power)
-    def get_info(self):
-        return (
-            f"Автомобиль: {self.brand}\n"
-            f"{self.engine.start()}\n"
-        )
-
-car = Car("Daewoo Nexia", 87)
-print(car.get_info())
+# class Engine:
+#     def __init__(self, power):
+#         self.power = power
+#
+#     def start(self):
+#         return f"Двигатель мощностью {self.power} л.с. запущен"
+#
+# class Car:
+#     def __init__(self, brand, power):
+#         self.brand = brand
+#         self.engine = Engine(power)
+#     def get_info(self):
+#         return (
+#             f"Автомобиль: {self.brand}\n"
+#             f"{self.engine.start()}\n"
+#         )
+#
+# car = Car("Daewoo Nexia", 87)
+# print(car.get_info())
 '''
 Задача 2: Компьютер
 Алгоритм:
@@ -119,7 +119,26 @@ print(car.get_info())
 Вызывает метод info() у объекта self.processor.
 Возвращает строку "Компьютер: [name], Процессор: [cores] ядра".
 '''
+class Processor:
+    def __init__(self, cores):
+        self.cores = cores
 
+    def info(self):
+        return  f"Процессор с {self.cores} ядрами"
+
+class Computer:
+    def __init__(self, name, cores):
+        self.name = name
+        self.processor = Processor(cores)
+
+    def info(self):
+        return (
+            f"Компьютер: {self.name}\n"
+            f"{self.processor.info()}\n"
+        )
+
+pc = Computer("iMac", 16)
+print(pc.info())
 '''
 Задача 3: Человек
 Алгоритм:
@@ -131,7 +150,27 @@ print(car.get_info())
 Вызывает метод get_address() у объекта self.address.
 Возвращает строку "Имя: [name], Адрес: [city], [street]".
 '''
+class Address:
+    def __init__(self, city, street):
+        self.city = city
+        self.street = street
 
+    def get_address(self):
+        return f"Город: {self.city}, Улица: {self.street}"
+
+class Person:
+    def __init__(self, name, city, street):
+        self.name = name
+        self.address = Address(city, street)
+
+    def get_address(self):
+        return (
+            f"Имя: {self.name}\n"
+            f"{self.address.get_address()}\n"
+        )
+
+pers = Person("Алексей", "Краснодар", "Рылеева")
+print(pers.get_address())
 '''
 Задача 4: Фильм
 Алгоритм:
