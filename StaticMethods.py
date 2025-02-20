@@ -97,7 +97,16 @@ print(user.get_info())  # Вывод: Имя: Алексей, Возраст: 37
 Если возраст больше или равен 18, верни True.
 Иначе верни False.
 '''
+class User:
+    @staticmethod
+    def is_adult(age):
+        if age >= 18:
+            return True
+        else:
+            return False
 
+print(User.is_adult(11))
+print(User.is_adult(37))
 '''
 Задача 2: Проверка года выпуска автомобиля
 Описание: Напиши класс Car, который имеет статический метод is_old(year). 
@@ -111,7 +120,16 @@ print(user.get_info())  # Вывод: Имя: Алексей, Возраст: 37
 Если возраст больше 10, верни True.
 Иначе верни False.
 '''
+class Car:
+    @staticmethod
+    def is_old(year):
+        if (2023 - year) > 10:
+            return True
+        else:
+            return False
 
+print(Car.is_old(2013))
+print(Car.is_old(2005))
 '''
 Задача 3: Проверка формата файла
 Описание: Напиши класс File, который имеет статический метод is_valid_format(file_name). 
@@ -125,7 +143,16 @@ print(user.get_info())  # Вывод: Имя: Алексей, Возраст: 37
 Если расширение входит в список допустимых (["pdf", "docx", "txt"]), верни True.
 Иначе верни False.
 '''
+class File:
+    @staticmethod
+    def is_valid_format(file_name):
+        if file_name.split(".")[-1] in (["pdf", "docx", "txt"]):
+            return True
+        else:
+            return False
 
+print(File.is_valid_format("zzz.txt"))
+print(File.is_valid_format("222.jpg"))
 '''
 Задача 4: Проверка пароля
 Описание: Напиши класс Password, который имеет статический метод is_strong(password). 
@@ -138,7 +165,16 @@ print(user.get_info())  # Вывод: Имя: Алексей, Возраст: 37
 Если длина пароля больше или равна 8, верни True.
 Иначе верни False.
 '''
+class Password:
+    @staticmethod
+    def is_strong(password):
+        if len(password) >= 8:
+            return True
+        else:
+            return False
 
+print(Password.is_strong("asdasd"))
+print(Password.is_strong("asdasdasdasd"))
 '''
 Задача 5: Конвертация температуры
 Описание: Напиши класс Temperature, который имеет статический метод celsius_to_fahrenheit(celsius). 
@@ -151,7 +187,12 @@ print(user.get_info())  # Вывод: Имя: Алексей, Возраст: 37
 Вычисли температуру по формуле: (celsius * 9/5) + 32.
 Верни результат.
 '''
+class Temperature:
+    @staticmethod
+    def celsius_to_fahrenheit(celsius):
+        return (celsius * 9/5) + 32
 
+print(Temperature.celsius_to_fahrenheit(30))
 '''
 Задача 6: Проверка email
 Описание: Напиши класс Email, который имеет статический метод is_valid(email). 
@@ -164,7 +205,13 @@ print(user.get_info())  # Вывод: Имя: Алексей, Возраст: 37
 Если в строке есть символ @, верни True.
 Иначе верни False.
 '''
+class Email:
+    @staticmethod
+    def is_valid(email):
+        return "@" in email
 
+print(Email.is_valid("setgecko@gmail.com"))
+print(Email.is_valid("setgeckogmail.com"))
 '''
 Задача 7: Вычисление площади прямоугольника
 Описание: Напиши класс Rectangle, который имеет статический метод calculate_area(width, height). 
@@ -177,7 +224,18 @@ print(user.get_info())  # Вывод: Имя: Алексей, Возраст: 37
 Вычисли площадь как width * height.
 Верни результат.
 '''
+class Rectangle:
+    @staticmethod
+    def calculate_area(width, height):
+        if width != 0 and height !=0:
+            return width * height
+        else:
+            return False
 
+print(Rectangle.calculate_area(1, 0))
+print(Rectangle.calculate_area(4, 2))
+print(Rectangle.calculate_area(0, 0))
+print(Rectangle.calculate_area(0, 2))
 '''
 Задача 8: Проверка дня недели
 Описание: Напиши класс Weekday, который имеет статический метод is_weekend(day). 
@@ -190,7 +248,16 @@ print(user.get_info())  # Вывод: Имя: Алексей, Возраст: 37
 Если день равен "Saturday" или "Sunday", верни True.
 Иначе верни False.
 '''
+class Weekday:
+    @staticmethod
+    def is_weekend(day):
+        if day == "Saturday" or day == "Sunday":
+            return True
+        else:
+            return False
 
+print(Weekday.is_weekend("Saturday"))
+print(Weekday.is_weekend("Monday"))
 '''
 Задача 9: Конвертация валют
 Описание: Напиши класс Currency, который имеет статический метод usd_to_rub(usd). 
@@ -203,7 +270,16 @@ print(user.get_info())  # Вывод: Имя: Алексей, Возраст: 37
 Вычисли сумму в рублях как usd * 80.
 Верни результат.
 '''
+class Currency:
+    @staticmethod
+    def usd_to_rub(usd):
+        if usd > 0:
+            return usd * 80
+        else:
+            return False
 
+print(Currency.usd_to_rub(10))
+print(Currency.usd_to_rub(0))
 '''
 Задача 10: Проверка номера телефона
 Описание: Напиши класс Phone, который имеет статический метод is_valid_number(number). 
@@ -216,3 +292,10 @@ print(user.get_info())  # Вывод: Имя: Алексей, Возраст: 37
 Если номер начинается с "+7" или "+1", верни True.
 Иначе верни False.
 '''
+class Phone:
+    @staticmethod
+    def is_valid_number(number):
+        return number.startswith(("+7", "+1"))
+
+print(Phone.is_valid_number("+411"))
+print(Phone.is_valid_number("+79604914701"))
