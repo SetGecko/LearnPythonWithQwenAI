@@ -113,10 +113,24 @@ print(paperbook.title, paperbook.author, paperbook.format)  # Вывод: Гип
 Создай класс Car, который хранит общее количество автомобилей (total_cars).
 Определи метод класса create_car(brand) с помощью декоратора @classmethod.
 Увеличь счетчик total_cars на 1.
+
 Создай объект класса Car с указанным брендом (brand) и верни его.
 Определи метод get_total_cars(), который возвращает текущее значение total_cars.
 '''
+class Car:
+    total_cars = 0
 
+    def __init__(self, brand):
+        self.brand = brand
+        Car.total_cars += 1
+
+    @classmethod
+    def get_total_cars(cls):
+        return f"Общее количество машин: {cls.total_cars}"
+
+car1 = Car("Daewoo Nexia")
+car2 = Car("Toyota Corolla Levin")
+print(Car.total_cars)
 '''
 Задача 2: Пользователь
 Алгоритм:
@@ -126,7 +140,20 @@ print(paperbook.title, paperbook.author, paperbook.format)  # Вывод: Гип
 Создай объект класса User с указанным именем (name) и верни его.
 Определи метод get_total_users(), который возвращает текущее значение total_users.
 '''
+class User:
+    total_users = 0
 
+    def __init__(self, name):
+        self.name = name
+        User.total_users += 1
+
+    @classmethod
+    def get_total_users(cls):
+        return f"Всего пользователей: {User.total_users}"
+
+user1 = User("Алексей")
+user2 = User("Qwen")
+print(User.total_users)
 '''
 Задача 3: Книга
 Алгоритм:
