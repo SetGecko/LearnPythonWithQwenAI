@@ -163,7 +163,20 @@ print(User.total_users)
 Создай объект класса Book с указанным названием (title) и верни его.
 Определи метод get_total_books(), который возвращает текущее значение total_books.
 '''
+class Book:
+    total_books = 0
 
+    def __init__(self, title):
+        self.title = title
+        Book.total_books += 1
+
+    @classmethod
+    def get_total_books(cls):
+        return Book.total_books
+
+b1 = Book("Hypireon")
+b2 = Book("Architect")
+print(Book.total_books)
 '''
 Задача 4: Город
 Алгоритм:
@@ -173,7 +186,21 @@ print(User.total_users)
 Создай объект класса City с указанным названием (name) и верни его.
 Определи метод get_total_cities(), который возвращает текущее значение total_cities.
 '''
+class City:
+    total_cities = 0
 
+    def __init__(self, name):
+        self.name = name
+        City.total_cities += 1
+
+    @classmethod
+    def get_total_cities(cls):
+        return City.total_cities
+
+c1 = City("Moscow")
+c2 = City("Krasnodar")
+c3 = City("Timashevsk")
+print(City.get_total_cities())
 '''
 Задача 5: Фильм
 Алгоритм:
@@ -183,7 +210,19 @@ print(User.total_users)
 Создай объект класса Film с указанным названием (title) и верни его.
 Определи метод get_total_films(), который возвращает текущее значение total_films.
 '''
+class Film:
+    total_films = 0
 
+    def __init__(self, title):
+        self.title = title
+        Film.total_films += 1
+
+    @classmethod
+    def get_total_films(cls):
+        return Film.total_films
+
+f1 = Film("Alien")
+print(Film.get_total_films())
 '''
 Задача 6: Телефон
 Алгоритм:
@@ -193,7 +232,20 @@ print(User.total_users)
 Создай объект класса Phone с указанным номером (number) и верни его.
 Определи метод get_total_phones(), который возвращает текущее значение total_phones.
 '''
+class Phone:
+    total_phones = 0
 
+    def __init__(self, number):
+        self.number = number
+        Phone.total_phones += 1
+
+    @classmethod
+    def get_total_phones(cls):
+        return Phone.total_phones
+
+p1 = Phone("iPhone")
+p2 = Phone("Xiaomi")
+print(Phone.get_total_phones())
 '''
 Задача 7: Банковский счет
 Алгоритм:
@@ -204,7 +256,25 @@ print(User.total_users)
 Принимает баланс (balance).
 Вычисляет проценты как balance * interest_rate / 100.
 '''
+class BankAccount:
+    interest_rate = 0  # Атрибут класса
 
+    @classmethod
+    def set_interest_rate(cls, new_rate):
+        cls.interest_rate = new_rate
+
+    def __init__(self, balance):
+        self.balance = balance
+        self.interest_rate = BankAccount.interest_rate
+
+    def calculate_interest(self):
+        return self.balance * self.interest_rate / 100
+
+
+b1 = BankAccount(1000)
+BankAccount.set_interest_rate(20)
+print(b1.interest_rate)
+print(b1.calculate_interest())
 '''
 Задача 8: Человек
 Алгоритм:
@@ -214,7 +284,19 @@ print(User.total_users)
 Создай объект класса Person с указанным именем (name) и верни его.
 Определи метод get_total_people(), который возвращает текущее значение total_people.
 '''
+class Person:
+    total_people = 0
 
+    def __init__(self, name):
+        self.name = name
+        Person.total_people += 1
+
+    @classmethod
+    def get_total_people(cls):
+        return Person.total_people
+p1 = Person("Alexey")
+p2 = Person("Anna")
+print(Person.get_total_people())
 '''
 Задача 9: Магазин
 Алгоритм:
@@ -224,7 +306,20 @@ print(User.total_users)
 Создай объект класса Store с указанным названием (name) и верни его.
 Определи метод get_total_stores(), который возвращает текущее значение total_stores.
 '''
+class Store:
+    total_stores = 0
 
+    def __init__(self, name):
+        self.name = name
+        Store.total_stores += 1
+
+    @classmethod
+    def get_total_stores(cls):
+        return Store.total_stores
+
+st1 = Store("Magnit")
+st2 = Store("Lenta")
+print(Store.get_total_stores())
 '''
 Задача 10: Кофемашина
 Алгоритм:
@@ -234,3 +329,19 @@ print(User.total_users)
 Создай объект класса CoffeeMachine с указанным моделью (model) и верни его.
 Определи метод get_total_machines(), который возвращает текущее значение total_machines.
 '''
+class CoffeeMachine:
+    total_machines = 0
+
+    def __init__(self, model):
+        self.model = model
+        CoffeeMachine.total_machines += 1
+
+    @classmethod
+    def get_total_machines(cls):
+        return CoffeeMachine.total_machines
+
+cm1 = CoffeeMachine("Indesit")
+cm2 = CoffeeMachine("Ariston")
+cm3 = CoffeeMachine("Nescafe")
+cm4 = CoffeeMachine("Bosch")
+print(CoffeeMachine.get_total_machines())
