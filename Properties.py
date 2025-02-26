@@ -165,7 +165,24 @@ xxx — это не просто метка, а именно имя, через 
 В сеттере @age.setter проверь: если value < 0 → сохранить 0, иначе value.
 В делитере @age.deleter установи _age = 0.
 '''
+class Person:
+    def __init__(self, age):
+        self._age = age
 
+    @property
+    def age(self):
+        return self._age
+
+    @age.setter
+    def age(self, value):
+        if not isinstance(value,int) and value < 0:
+            return "Ошибка"
+        else:
+            self._age = value
+
+    @age.deleter
+    def age(self):
+        self._age = 0
 '''
 Задача 2: Свойство для пароля
 Описание: Создай класс User, который будет хранить пароль (password). Сеттер должен требовать длину пароля ≥8 символов.
@@ -176,7 +193,24 @@ xxx — это не просто метка, а именно имя, через 
 В сеттере @password.setter проверь: если len(value) < 8 → вывести ошибку, иначе сохранить.
 В делитере @password.deleter установи _password = None.
 '''
+class User:
+    def __init__(self, password):
+        self._password = password
 
+    @property
+    def password(self):
+        return self._password
+
+    @password.setter
+    def password(self, value):
+        if len(value) < 8:
+            raise ValueError("Пароль слишком короткий!")
+        else:
+            self._password = value
+
+    @password.deleter
+    def password(self):
+        self._password = None
 '''
 Задача 3: Свойство для email
 Описание: Создай класс Contact, который будет хранить email. Сеттер должен проверять наличие @ и .com.
@@ -187,7 +221,24 @@ xxx — это не просто метка, а именно имя, через 
 В сеттере @email.setter проверь: если в value нет @ или .com → вывести ошибку, иначе сохранить.
 В делитере @email.deleter установи _email = None.
 '''
+class Contact:
+    def __init__(self, email):
+        self._email = email
 
+    @property
+    def email(self):
+        return self._email
+
+    @email.setter
+    def email(self, value):
+        if "@" not in value or ".com" not in value:
+            raise ValueError("Email должен содержать @ и .com")
+        else:
+            self._email = value
+
+    @email.deleter
+    def email(self):
+        self._email = None
 '''
 Задача 4: Свойство для координат
 Описание: Создай класс GPS, который будет хранить широту (latitude) и долготу (longitude). Сеттеры должны ограничивать значения диапазоном -180..180.
@@ -199,7 +250,28 @@ xxx — это не просто метка, а именно имя, через 
 Сеттер с проверкой: если value вне диапазона → сохранить 0, иначе value.
 Делитер, устанавливающий значение в 0.
 '''
+class GPS:
+    def __init__(self, latitude, longitude):
+        self._latitude = latitude
+        self._longitude = longitude
 
+    @property
+    def gps(self):
+        return f"latitude: {self._latitude}, longitude: {self._longitude}"
+
+    @gps.setter
+    def gps(self, value):
+        if value > -180 and value < 180:
+            self._latitude = value
+            self._longitude = value
+        else:
+            self._latitude = 0
+            self._longitude = 0
+
+    @gps.deleter
+    def gps(self):
+        self._latitude = 0
+        self._longitude = 0
 '''
 Задача 5: Свойство для баланса счета
 Описание: Создай класс BankAccount, который будет хранить баланс (balance). Сеттер должен предотвращать отрицательный баланс.
@@ -209,6 +281,31 @@ xxx — это не просто метка, а именно имя, через 
 Геттер @property balance возвращает _balance.
 В сеттере @balance.setter проверь: если value < 0 → сохранить 0, иначе value.
 Делитер @balance.deleter устанавливает _balance = 0.
+'''
+class BankAccount:
+    def __init__(self, balance):
+        self._balance = balance
+
+    @property
+    def balance(self):
+        return self._balance
+
+    @balance.setter
+    def balance(self, value):
+        if value < 0:
+            self._balance = 0
+        else:
+            self._balance = value
+
+    @balance.deleter
+    def balance(self):
+        self._balance = 0
+
+'''
+    def __init__(self, number):
+        if not number.startswith("+7") and not number.startswith("+1"):
+            raise ValueError("Некорректный код страны!")
+        self.number = number
 '''
 
 '''
@@ -220,8 +317,27 @@ xxx — это не просто метка, а именно имя, через 
 Геттер @property course возвращает _course.
 В сеттере @course.setter проверь: если value не в диапазоне 1–6 → сохранить 1, иначе value.
 Делитер @course.deleter устанавливает _course = 1.
-'''
 
+
+'''
+class Student:
+    def __init__(self, course):
+            self.course = course
+
+    @property
+    def course(self):
+        return self._course
+
+    @course.setter
+    def course(self, value):
+        if 1 <= value <= 6:
+            self._course = value
+        else:
+            self._course = 1
+
+    @course.deleter
+    def course(self):
+        self._course = 1
 '''
 Задача 7: Свойство для года выпуска книги
 Описание: Создай класс Book, который будет хранить год выпуска (year). Сеттер должен запрещать года в будущем.
