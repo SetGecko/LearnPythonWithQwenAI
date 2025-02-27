@@ -157,7 +157,8 @@ xxx — это не просто метка, а именно имя, через 
 
 '''
 Задача 1: Свойство для возраста
-Описание: Создай класс Person, который будет хранить возраст (age). Сеттер должен запрещать отрицательные значения, делитер — устанавливать возраст в 0.
+Описание: Создай класс Person, который будет хранить возраст (age). 
+Сеттер должен запрещать отрицательные значения, делитер — устанавливать возраст в 0.
 Алгоритм:
 
 Создай приватный атрибут _age.
@@ -185,7 +186,8 @@ class Person:
         self._age = 0
 '''
 Задача 2: Свойство для пароля
-Описание: Создай класс User, который будет хранить пароль (password). Сеттер должен требовать длину пароля ≥8 символов.
+Описание: Создай класс User, который будет хранить пароль (password). 
+Сеттер должен требовать длину пароля ≥8 символов.
 Алгоритм:
 
 Создай приватный атрибут _password.
@@ -241,7 +243,8 @@ class Contact:
         self._email = None
 '''
 Задача 4: Свойство для координат
-Описание: Создай класс GPS, который будет хранить широту (latitude) и долготу (longitude). Сеттеры должны ограничивать значения диапазоном -180..180.
+Описание: Создай класс GPS, который будет хранить широту (latitude) и долготу (longitude). 
+Сеттеры должны ограничивать значения диапазоном -180..180.
 Алгоритм:
 
 Создай приватные атрибуты _latitude и _longitude.
@@ -256,25 +259,30 @@ class GPS:
         self._longitude = longitude
 
     @property
-    def gps(self):
-        return f"latitude: {self._latitude}, longitude: {self._longitude}"
+    def latitude(self):
+        return self._latitude
 
-    @gps.setter
-    def gps(self, value):
-        if value > -180 and value < 180:
-            self._latitude = value
-            self._longitude = value
-        else:
+    @latitude.setter
+    def latitude(self, value):
+        if not (-180 <= value <= 180):
             self._latitude = 0
-            self._longitude = 0
+        else:
+            self._latitude = value
 
-    @gps.deleter
-    def gps(self):
-        self._latitude = 0
-        self._longitude = 0
+    @property
+    def longitude(self):
+        return self._longitude
+
+    @longitude.setter
+    def longitude(self, value):
+        if not (-180 <= value <= 180):
+            self._longitude = 0
+        else:
+            self._longitude = value
 '''
 Задача 5: Свойство для баланса счета
-Описание: Создай класс BankAccount, который будет хранить баланс (balance). Сеттер должен предотвращать отрицательный баланс.
+Описание: Создай класс BankAccount, который будет хранить баланс (balance). 
+Сеттер должен предотвращать отрицательный баланс.
 Алгоритм:
 
 Создай приватный _balance.
@@ -310,15 +318,14 @@ class BankAccount:
 
 '''
 Задача 6: Свойство для курса студента
-Описание: Создай класс Student, который будет хранить курс (course). Сеттер должен разрешать только значения от 1 до 6.
+Описание: Создай класс Student, который будет хранить курс (course). 
+Сеттер должен разрешать только значения от 1 до 6.
 Алгоритм:
 
 Создай приватный _course.
 Геттер @property course возвращает _course.
 В сеттере @course.setter проверь: если value не в диапазоне 1–6 → сохранить 1, иначе value.
 Делитер @course.deleter устанавливает _course = 1.
-
-
 '''
 class Student:
     def __init__(self, course):
@@ -340,7 +347,8 @@ class Student:
         self._course = 1
 '''
 Задача 7: Свойство для года выпуска книги
-Описание: Создай класс Book, который будет хранить год выпуска (year). Сеттер должен запрещать года в будущем.
+Описание: Создай класс Book, который будет хранить год выпуска (year). 
+Сеттер должен запрещать года в будущем.
 Алгоритм:
 
 Создай приватный _year.
@@ -348,10 +356,28 @@ class Student:
 В сеттере @year.setter проверь: если value > 2023 → сохранить 2023, иначе value.
 Делитер @year.deleter устанавливает _year = 2023.
 '''
+class Book:
+    def __init__(self, year):
+            self.year = year
 
+    @property
+    def year(self):
+        return self._year
+
+    @year.setter
+    def year(self, value):
+        if value > 2023:
+            self._year = 2023
+        else:
+            self._year = value
+
+    @year.deleter
+    def year(self):
+        self._year = 2023
 '''
 Задача 8: Свойство для температуры
-Описание: Создай класс Thermometer, который будет хранить температуру в Цельсиях (celsius). Сеттер должен предотвращать значения ниже -273°C.
+Описание: Создай класс Thermometer, который будет хранить температуру в Цельсиях (celsius). 
+Сеттер должен предотвращать значения ниже -273°C.
 Алгоритм:
 
 Создай приватный _celsius.
@@ -359,7 +385,24 @@ class Student:
 В сеттере @celsius.setter проверь: если value < -273 → сохранить -273, иначе value.
 Делитер @celsius.deleter устанавливает _celsius = -273.
 '''
+class Thermometer:
+    def __init__(self, celsius):
+        self.celsius = celsius
 
+    @property
+    def celsius(self):
+        return self._celsius
+
+    @celsius.setter
+    def celsius(self, value):
+        if value < -273:
+            self._celsius = -273
+        else:
+            self._celsius = value
+
+    @celsius.deleter
+    def celsius(self):
+        self._celsius = -273
 '''
 Задача 9: Свойство для номера телефона
 Описание: Создай класс Phone, который будет хранить номер (number). Сеттер должен требовать 11 цифр.
@@ -370,7 +413,24 @@ class Student:
 В сеттере @number.setter проверь: если длина value ≠ 11 → вывести ошибку, иначе сохранить.
 Делитер @number.deleter устанавливает _number = None.
 '''
+class Phone:
+    def __init__(self, number):
+        self.number = number
 
+    @property
+    def number(self):
+        return self._number
+
+    @number.setter
+    def number(self, value):
+        if len(str(value)) != 11:
+            raise ValueError("Некорректноре число символов")
+        else:
+            self._number = value
+
+    @number.deleter
+    def number(self):
+        self._number = None
 '''
 Задача 10: Свойство для населения города
 Описание: Создай класс City, который будет хранить население (population). Сеттер должен запрещать отрицательное население.
@@ -381,10 +441,28 @@ class Student:
 В сеттере @population.setter проверь: если value < 0 → сохранить 0, иначе value.
 Делитер @population.deleter устанавливает _population = 0.
 '''
+class City:
+    def __init__(self, population):
+        self.population = population
 
+    @property
+    def population(self):
+        return self._population
+
+    @population.setter
+    def population(self, value):
+        if value < 0:
+            self._population = 0
+        else:
+            self._population = value
+
+    @population.deleter
+    def population(self):
+        self._population = 0
 '''
 Задача 11: Свойство для регистрации пользователя
-Описание: Создай класс Profile, который будет хранить год регистрации (registration_year). Сеттер должен разрешать только прошлые годы.
+Описание: Создай класс Profile, который будет хранить год регистрации (registration_year). 
+Сеттер должен разрешать только прошлые годы.
 Алгоритм:
 
 Создай приватный _registration_year.
@@ -392,7 +470,24 @@ class Student:
 В сеттере @registration_year.setter проверь: если value > 2023 → сохранить 2023, иначе value.
 Делитер @registration_year.deleter устанавливает _registration_year = 2023.
 '''
+class Profile:
+    def __init__(self, registration_year):
+        self.registration_year = registration_year
 
+    @property
+    def registration_year(self):
+        return self._registration_year
+
+    @registration_year.setter
+    def registration_year(self, value):
+        if value > 2023:
+            self._registration_year = 2023
+        else:
+            self._registration_year = value
+
+    @registration_year.deleter
+    def registration_year(self):
+        self._registration_year = 2023
 '''
 Задача 12: Свойство для цены товара
 Описание: Создай класс Product, который будет хранить цену (price). Сеттер должен предотвращать отрицательные значения.
@@ -403,10 +498,28 @@ class Student:
 В сеттере @price.setter проверь: если value < 0 → сохранить 0, иначе value.
 Делитер @price.deleter устанавливает _price = 0.
 '''
+class Product:
+    def __init__(self, price):
+        self.price = price
 
+    @property
+    def price(self):
+        return self._price
+
+    @price.setter
+    def price(self, value):
+        if value < 0:
+            self._price = 0
+        else:
+            self._price = value
+
+    @price.deleter
+    def price(self):
+        self._price = 0
 '''
 Задача 13: Свойство для зарплаты сотрудника
-Описание: Создай класс Employee, который будет хранить зарплату (salary). Сеттер должен предотвращать отрицательные значения.
+Описание: Создай класс Employee, который будет хранить зарплату (salary). 
+Сеттер должен предотвращать отрицательные значения.
 Алгоритм:
 
 Создай приватный _salary.
@@ -414,7 +527,24 @@ class Student:
 В сеттере @salary.setter проверь: если value < 0 → сохранить 0, иначе value.
 Делитер @salary.deleter устанавливает _salary = 0.
 '''
+class Employee:
+    def __init__(self, salary):
+        self.salary = salary
 
+    @property
+    def salary(self):
+        return self._salary
+
+    @salary.setter
+    def salary(self, value):
+        if value < 0:
+            self._salary = 0
+        else:
+            self._salary = value
+
+    @salary.deleter
+    def salary(self):
+        self._salary = 0
 '''
 Задача 14: Свойство для оценки студента
 Описание: Создай класс StudentGrade, который будет хранить оценку (grade). Сеттер должен разрешать только значения от 2 до 5.
@@ -425,6 +555,24 @@ class Student:
 В сеттере @grade.setter проверь: если value не в диапазоне 2–5 → сохранить 3, иначе value.
 Делитер @grade.deleter устанавливает _grade = 3.
 '''
+class StudentGrade:
+    def __init__(self, grade):
+        self.grade = grade
+
+    @property
+    def grade(self):
+        return self._grade
+
+    @grade.setter
+    def grade(self, value):
+        if 2 <= value <= 5:
+            self._grade = 3
+        else:
+            self._grade = value
+
+    @grade.deleter
+    def grade(self):
+        self._grade = 3
 
 '''
 Задача 15: Свойство для модели автомобиля
@@ -436,169 +584,21 @@ class Student:
 В сеттере @model_year.setter проверь: если value > 2023 → сохранить 2023, иначе value.
 Делитер @model_year.deleter устанавливает _model_year = 2023.
 '''
+class CarModel:
+    def __init__(self, model_year):
+        self.model_year = model_year
 
-'''
-Задача 16: Свойство для веса
-Описание: Создай класс Weight, который будет хранить вес (kg). Сеттер должен предотвращать отрицательные значения.
-Алгоритм:
+    @property
+    def model_year(self):
+        return self._model_year
 
-Создай приватный _kg.
-Геттер @property kg возвращает _kg.
-В сеттере @kg.setter проверь: если value < 0 → сохранить 0, иначе value.
-Делитер @kg.deleter устанавливает _kg = 0.
-'''
+    @model_year.setter
+    def model_year(self, value):
+        if value > 2023:
+            self._model_year = 2023
+        else:
+            self._model_year = value
 
-'''
-Задача 17: Свойство для высоты
-Описание: Создай класс Height, который будет хранить рост (cm). Сеттер должен разрешать значения от 50 до 250 см.
-Алгоритм:
-
-Создай приватный _cm.
-Геттер @property cm возвращает _cm.
-В сеттере @cm.setter проверь: если value вне диапазона 50–250 → сохранить 170, иначе value.
-Делитер @cm.deleter устанавливает _cm = 170.
-'''
-
-'''
-Задача 18: Свойство для скорости
-Описание: Создай класс Speed, который будет хранить скорость (km_h). Сеттер должен предотвращать отрицательные значения.
-Алгоритм:
-
-Создай приватный _km_h.
-Геттер @property km_h возвращает _km_h.
-В сеттере @km_h.setter проверь: если value < 0 → сохранить 0, иначе value.
-Делитер @km_h.deleter устанавливает _km_h = 0.
-'''
-
-'''
-Задача 19: Свойство для процента
-Описание: Создай класс Percentage, который будет хранить значение (value). Сеттер должен ограничивать диапазон 0–100.
-Алгоритм:
-
-Создай приватный _value.
-Геттер @property value возвращает _value.
-В сеттере @value.setter проверь: если value вне диапазона → сохранить 0, иначе value.
-Делитер @value.deleter устанавливает _value = 0.
-'''
-
-'''
-Задача 20: Свойство для процента заполнения бензобака
-Описание: Создай класс FuelTank, который будет хранить процент заполнения (fill). Сеттер должен ограничивать диапазон 0–100.
-Алгоритм:
-
-Создай приватный _fill.
-Геттер @property fill возвращает _fill.
-В сеттере @fill.setter проверь: если value вне диапазона → сохранить 0, иначе value.
-Делитер @fill.deleter устанавливает _fill = 0.
-'''
-
-'''
-Задача 21: Свойство для количества страниц
-Описание: Создай класс BookPages, который будет хранить количество страниц (pages). Сеттер должен предотвращать отрицательные значения.
-Алгоритм:
-
-Создай приватный _pages.
-Геттер @property pages возвращает _pages.
-В сеттере @pages.setter проверь: если value < 0 → сохранить 0, иначе value.
-Делитер @pages.deleter устанавливает _pages = 0.
-'''
-
-'''
-Задача 22: Свойство для температуры
-Описание: Создай класс Thermostat, который будет хранить температуру (temperature). Сеттер должен ограничивать диапазон 0–50°C.
-Алгоритм:
-
-Создай приватный _temperature.
-Геттер @property temperature возвращает _temperature.
-В сеттере @temperature.setter проверь: если value вне диапазона → сохранить 20, иначе value.
-Делитер @temperature.deleter устанавливает _temperature = 20.
-'''
-
-'''
-Задача 23: Свойство для количества товаров
-Описание: Создай класс Inventory, который будет хранить количество товаров (count). Сеттер должен предотвращать отрицательные значения.
-Алгоритм:
-
-Создай приватный _count.
-Геттер @property count возвращает _count.
-В сеттере @count.setter проверь: если value < 0 → сохранить 0, иначе value.
-Делитер @count.deleter устанавливает _count = 0.
-'''
-
-'''
-Задача 24: Свойство для уровня заряда
-Описание: Создай класс Battery, который будет хранить уровень заряда (charge). Сеттер должен ограничивать диапазон 0–100%.
-Алгоритм:
-
-Создай приватный _charge.
-Геттер @property charge возвращает _charge.
-В сеттере @charge.setter проверь: если value вне диапазона → сохранить 100, иначе value.
-Делитер @charge.deleter устанавливает _charge = 100.
-'''
-
-'''
-Задача 25: Свойство для количества учеников
-Описание: Создай класс Classroom, который будет хранить количество учеников (students). Сеттер должен предотвращать отрицательные значения.
-Алгоритм:
-
-Создай приватный _students.
-Геттер @property students возвращает _students.
-В сеттере @students.setter проверь: если value < 0 → сохранить 0, иначе value.
-Делитер @students.deleter устанавливает _students = 0.
-'''
-
-'''
-Задача 26: Свойство для координат
-Описание: Создай класс Coordinates, который будет хранить x и y. Сеттеры должны ограничивать значения диапазоном -1000..1000.
-Алгоритм:
-
-Создай приватные _x и _y.
-Для каждого атрибута:
-Геттер @property.
-Сеттер с проверкой диапазона.
-Делитер, устанавливающий значение в 0.
-'''
-
-'''
-Задача 27: Свойство для процента湿度
-Описание: Создай класс Humidity, который будет хранить влажность (percent). Сеттер должен ограничивать диапазон 0–100.
-Алгоритм:
-
-Создай приватный _percent.
-Геттер @property percent возвращает _percent.
-В сеттере @percent.setter проверь: если value вне диапазона → сохранить 50, иначе value.
-Делитер @percent.deleter устанавливает _percent = 50.
-'''
-
-'''
-Задача 28: Свойство для количества лайков
-Описание: Создай класс Post, который будет хранить количество лайков (likes). Сеттер должен предотвращать отрицательные значения.
-Алгоритм:
-
-Создай приватный _likes.
-Геттер @property likes возвращает _likes.
-В сеттере @likes.setter проверь: если value < 0 → сохранить 0, иначе value.
-Делитер @likes.deleter устанавливает _likes = 0.
-'''
-
-'''
-Задача 29: Свойство для количества страниц в журнале
-Описание: Создай класс Magazine, который будет хранить количество страниц (pages). Сеттер должен предотвращать отрицательные значения.
-Алгоритм:
-
-Создай приватный _pages.
-Геттер @property pages возвращает _pages.
-В сеттере @pages.setter проверь: если value < 0 → сохранить 0, иначе value.
-Делитер @pages.deleter устанавливает _pages = 0.
-'''
-
-'''
-Задача 30: Свойство для уровня громкости
-Описание: Создай класс Volume, который будет хранить уровень громкости (level). Сеттер должен ограничивать диапазон 0–100.
-Алгоритм:
-
-Создай приватный _level.
-Геттер @property level возвращает _level.
-В сеттере @level.setter проверь: если value вне диапазона → сохранить 50, иначе value.
-Делитер @level.deleter устанавливает _level = 50.
-'''
+    @model_year.deleter
+    def model_year(self):
+        self._model_year = 2023
