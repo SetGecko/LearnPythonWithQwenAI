@@ -412,21 +412,36 @@ __setitem__ нужен для имитации изменяемых структ
 Алгоритм:
 В __setitem__ обнови self.tasks[index] = value.
 '''
+class TaskList:
+    def __init__(self, tasks):
+        self.tasks = tasks
 
+    def __setitem__(self, key, value):
+        self.tasks[key] = value
 '''
 Изменение символов в строке класса Text
 Создай класс Text, который позволяет менять символы строки по индексу.
 Алгоритм:
 В __setitem__ обнови self.content = self.content[:index] + value + self.content[index+1:].
 '''
+class Text:
+    def __init__(self, content):
+        self.content = content
 
+    def __setitem__(self, key, value):
+        self.content = self.content[:key] + value + self.content[key + 1:]
 '''
 Изменение товаров в корзине
 Создай класс ShoppingCart, который позволяет заменять товары по индексу.
 Алгоритм:
 В __setitem__ обнови self.items[index] = value.
 '''
+class ShoppingCart:
+    def __init__(self, items):
+        self.items = items
 
+    def __setitem__(self, key, value):
+        self.items[key] = value
 '''
 =================== Магический метод __call__ ===================
 Описание:
@@ -450,21 +465,46 @@ __call__ полезен для объектов-функций (например
 Алгоритм:
 В __call__ обнови self.count += 1.
 '''
+class ClickCounter:
+    def __init__(self):
+        self.count = 0
 
+    def __call__(self):
+        self.count += 1
+        return self.count
 '''
 Калькулятор
 Создай класс Calculator, который через __call__ выполняет сложение двух чисел.
 Алгоритм:
 В __call__(a, b) верни a + b.
 '''
+class Calculator:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
 
+    def __call__(self, a, b):
+        return self.a + self.b
 '''
 Таймер
 Создай класс Timer, который через __call__ запускает таймер на указанное время.
 Алгоритм:
 В __call__(seconds) используй time.sleep(seconds).
 '''
+import time  # Импортируем модуль time для работы со временем
 
+
+class Timer:
+    def __call__(self, seconds):
+        if not isinstance(seconds, (int, float)):
+            raise ValueError("Время должно быть числом!")
+
+        if seconds < 0:
+            raise ValueError("Время не может быть отрицательным!")
+
+        print(f"Таймер запущен на {seconds} секунд.")
+        time.sleep(seconds)
+        print("Таймер завершился!")
 '''
 =================== Магический метод __del__ ===================
 Описание:
@@ -485,21 +525,36 @@ __del__ используется для очистки ресурсов (зак�
 Алгоритм:
 В __del__ напиши print(f"Файл {self.name} удалён").
 '''
+class File:
+    def __init__(self, name):
+        self.name = name
 
+    def __del__(self):
+        print(f"Файл {self.name} удалён")
 '''
 Освобождение памяти
 Создай класс Memory, который при удалении объекта выводит информацию о высвобожденной памяти.
 Алгоритм:
 В __del__ напиши print(f"Освобождено {self.size} МБ").
 '''
+class Memory:
+    def __init__(self, size):
+        self.size = size
 
+    def __del__(self):
+        print(f"Освобождено {self.size} МБ")
 '''
 Закрытие соединения
 Создай класс DatabaseConnection, который при удалении закрывает соединение с БД.
 Алгоритм:
 В __del__ вызови self.close_connection().
 '''
+class DatabaseConnection:
+    def __init__(self, close_connection):
+        self.close_connection = close_connection
 
+    def __del__(self):
+        print(f"Закрыто соединение с БД")
 '''
 =================== Магический метод __delitem__ ===================
 Описание:
@@ -522,21 +577,37 @@ __delitem__ нужен для работы с объектами как с из�
 Алгоритм:
 В __delitem__ удали self.tasks.pop(index).
 '''
+class TaskList:
+    def __init__(self, tasks):
+        self.tasks = tasks
 
+    def __delitem__(self, key):
+        self.tasks.pop(key)
+        return self.tasks
 '''
 Удаление товара из корзины
 Создай класс ShoppingCart, который через __delitem__ удаляет товары.
 Алгоритм:
 В __delitem__ удали del self.items[index].
 '''
+class ShoppingCart2:
+    def __init__(self, items):
+        self.items = items
 
+    def __delitem__(self, key):
+        del self.items[key]
 '''
 Удаление символа из строки в классе Text
 Создай класс Text, который позволяет удалять символы по индексу.
 Алгоритм:
 В __delitem__ обнови self.content = self.content[:index] + self.content[index+1:].
 '''
+class Text2:
+    def __init__(self, content):
+        self.content = content
 
+    def __delitem__(self, key):
+        self.content = self.content[:key] + self.content[key + 1:]
 '''
 =================== Магический метод __contains__ ===================
 Описание:
